@@ -60,7 +60,7 @@ public class ContentReader {
 
         if (archiveName.endsWith(".jar")) {
                 formatReader = new JarReader(binaryArchive);
-        } else if (archiveName.endsWith(".dex")) {
+        } else if (archiveName.endsWith(".dex") || BinaryVerify.verifyMagic(binaryArchive, BinaryVerify.DEX_FILE_MAGIC)) {
             formatReader = new DexReader(binaryArchive);
         } else if (archiveName.endsWith(".apk")) {
             formatReader = new ApkReader(binaryArchive);
